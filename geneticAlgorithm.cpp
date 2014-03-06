@@ -63,7 +63,7 @@ double decimal(string a)
 	double output = 0;
 	double two = 2;
     for (int i = 0; n > 0; i++) 
-	{
+		{
         if (n % 10 == 1) 
 		{
             output += pow(two, i);
