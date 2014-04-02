@@ -89,9 +89,9 @@ void LongInt::plus(LongInt & sum, const LongInt & a, const LongInt & b, int smal
 	while (small >= 0)
 	{
 		sum.digits.push_front(((a.digits[small] - '0') + (b.digits[large] - '0')
-								+ carry) % 10 + '0');
+				      + carry) % 10 + '0');
 		carry = ((a.digits[small--] - '0') + (b.digits[large--] - '0')
-			    + carry) / 10;
+			+ carry) / 10;
 	}
 
 	for (int i = 0; i <= large; i++)
@@ -181,15 +181,17 @@ void LongInt::minus(LongInt & result, LongInt & a, LongInt & b, int small, int l
 					a.digits[borrow - 1] = a.digits[borrow - 1] - 1;
 					a.digits[borrow] = a.digits[borrow--] + 10;
 				}
-				result.digits.push_front((a.digits[large] - '0' + 10) - (b.digits[small] - '0') + '0');
+				result.digits.push_front((a.digits[large] - '0' + 10) -
+				                         (b.digits[small] - '0') + '0');
 			}
 			else
 				result.digits.push_front((b.digits[small] - '0') + '0');
 		}
 		else if (a.digits[large] - '0' >= b.digits[small] - '0')
-			result.digits.push_front((a.digits[large] - '0') - (b.digits[small] - '0') + '0');
+			result.digits.push_front((a.digits[large] - '0') - 
+			                        (b.digits[small] - '0') + '0');
 		else if (a.digits[small] > 0)
-				result.digits.push_front(0 + '0');
+			result.digits.push_front(0 + '0');
 		small--;
 		large--;
 	}
@@ -241,7 +243,7 @@ bool LongInt::operator<(const LongInt & rhs) const
 			if (this->digits[i] - '0' != rhs.digits[i] - '0')
 			{
 				if ((this->digits[i] - '0' > rhs.digits[i] - '0' && rhsSign == false) ||
-					(this->digits[i] - '0' < rhs.digits[i] - '0' && rhsSign == true))
+				    (this->digits[i] - '0' < rhs.digits[i] - '0' && rhsSign == true))
 					return true;
 				else
 					return false;
